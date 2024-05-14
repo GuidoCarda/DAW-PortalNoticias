@@ -1,3 +1,136 @@
-h1 {
-  color: red;
+body {
+  min-height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 2.5rem;
+  max-width: 30ch;
+}
+
+p,
+li {
+  max-width: 60ch;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+ol li + li {
+  margin-top: 1.125rem;
+}
+
+header {
+  height: 5rem;
+  padding-inline: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+header,
+footer {
+  background: #111827;
+  color: white;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0;
+  margin-left: 2rem;
+}
+
+header span {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+header nav ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+}
+
+main {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main section {
+  flex: 1;
+  padding: 2rem;
+  background: #ffffff;
+}
+
+.post-img {
+  /* height: 15rem; */
+  margin-bottom: 2rem;
+  width: 100%;
+  background: rgb(215, 215, 215);
+  border-radius: 1rem;
+}
+
+main aside {
+  min-height: 10rem;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    flex-direction: row;
+  }
+
+  main aside {
+    padding: 1.5rem 2rem;
+    width: max(14rem, 18%);
+  }
+
+  main section > div {
+    border: 1px solid rgb(249, 249, 249);
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+
+  .post-img {
+    aspect-ratio: 16/9;
+    margin-bottom: 2rem;
+    margin-inline: auto;
+    background: rgb(215, 215, 215);
+    border-radius: 1rem;
+  }
+}
+
+footer {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*  Add scrollable height to section */
+/* main section div {
+  height: 100rem;
+  border: 1px solid black;
+} */
