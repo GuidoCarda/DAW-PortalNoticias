@@ -26,11 +26,52 @@
           <li><a href="">Contact</a></li>
         </ul>
       </nav>
+      <button class="nav-toggle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 6l16 0" />
+          <path d="M4 12l16 0" />
+          <path d="M4 18l16 0" />
+        </svg>
+      </button>
     </header>
+    <div class="categories">
+      <ul>
+        <li>
+          <a href="">Coding</a>
+        </li>
+        <li><a href="">Architecture</a></li>
+        <li><a href="">Frameworks</a></li>
+        <li><a href="">Frameworks</a></li>
+        <li><a href="">Frameworks</a></li>
+        <li><a href="">Frameworks</a></li>
+        <li><a href="">Frameworks</a></li>
+      </ul>
+    </div>
+
     <main>
       <!-- asides or sections? -->
       <aside id="latest">
-        <h3>Ultimas noticias</h3>
+        <h2>Ultimas noticias</h2>
+        <article class="article-card">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS3h5U91UGirpDrTCLWHpOPsJbE4QFE83A6XHxCrkCZw&s"
+            alt="article"
+          />
+          <h3>New Smartphone Unveiled</h3>
+          <p>The latest flagship device from a leading tech company.</p>
+        </article>
       </aside>
       <section>
         <div>
@@ -92,8 +133,32 @@
           </ol>
         </div>
       </section>
-      <aside id="categories">
-        <h3>Categorias</h3>
+      <aside id="trending">
+        <h2>Temas del momento</h2>
+        <article class="trending-article-card">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 17l6 -6l4 4l8 -8" />
+              <path d="M14 7l7 0l0 7" />
+            </svg>
+          </span>
+          <div>
+            <h3>Bienvenido ChatGPT-4o</h3>
+            <span>Hace 2 minutos</span>
+          </div>
+        </article>
       </aside>
     </main>
 

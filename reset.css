@@ -19,6 +19,10 @@ p {
   text-wrap: pretty;
 }
 
+button {
+  cursor: pointer;
+}
+
 /**
  * This CSS block is a More Effective CSS Image Reset. 
  * It resets the default styles of an image element
