@@ -43,9 +43,8 @@
         <ul>
           <li><a href="">Inicio</a></li>
           <li><a href="">Noticias</a></li>
-          <li><a href="">Reviews</a></li>
-          <li><a href="">Features</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="">Categorias</a></li>
+          <li><a href="">Contacto</a></li>
         </ul>
       </nav>
       <button class="nav-toggle">
@@ -71,29 +70,54 @@
     <div class="categories">
       <ul>
         <li>
-          <a href="">Coding</a>
+          <a href="#">Coding</a>
         </li>
-        <li><a href="">Architecture</a></li>
-        <li><a href="">Frameworks</a></li>
-        <li><a href="">Frameworks</a></li>
-        <li><a href="">Frameworks</a></li>
-        <li><a href="">Frameworks</a></li>
-        <li><a href="">Frameworks</a></li>
+        <li><a href="#">Architecture</a></li>
+        <li><a href="#">Frameworks</a></li>
+        <li><a href="#">Frameworks</a></li>
+        <li><a href="#">Frameworks</a></li>
+        <li><a href="#">Frameworks</a></li>
+        <li><a href="#">Frameworks</a></li>
       </ul>
     </div>
 
     <main>
-      <!-- asides or sections? -->
-      <aside id="latest">
-        <h2>Ultimas noticias</h2>
-        <article class="article-card">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS3h5U91UGirpDrTCLWHpOPsJbE4QFE83A6XHxCrkCZw&s"
-            alt="article"
-          />
-          <h3>New Smartphone Unveiled</h3>
-          <p>The latest flagship device from a leading tech company.</p>
-        </article>
+      <aside class="most-visited-categories">
+        <h2>Categorias más visitadas</h2>
+        <ul>
+          <li>
+            <a href="/categorias/desarrollo-web">Desarrollo Web</a>
+          </li>
+          <li><a href="/categorias/frontend">Frontend</a></li>
+          <li><a href="/categorias/backend">Backend</a></li>
+          <li><a href="/categorias/bases-de-datos">Bases de Datos</a></li>
+          <li><a href="/categorias/devops">DevOps</a></li>
+          <li>
+            <a href="/categorias/apis-servicios-web">APIs y Servicios Web</a>
+          </li>
+          <li><a href="/categorias/seguridad-web">Seguridad Web</a></li>
+          <li><a href="/categorias/testing-qa">Testing y QA</a></li>
+          <li>
+            <a href="/categorias/metodologias-agiles">Metodologías Ágiles</a>
+          </li>
+
+          <li><a href="/categorias/mejores-practicas">Mejores Prácticas</a></li>
+          <li>
+            <a href="/categorias/performance-optimizacion"
+              >Performance y Optimización</a
+            >
+          </li>
+          <li>
+            <a href="/categorias/proyectos-portafolio"
+              >Proyectos y Portafolio</a
+            >
+          </li>
+          <li>
+            <a href="/categorias/entrevistas-opiniones"
+              >Entrevistas y Opiniones</a
+            >
+          </li>
+        </ul>
       </aside>
       <section>
         <div>
@@ -153,32 +177,94 @@
           </ul>
         </div>
       </section>
-      <aside id="trending">
+      <aside class="trending">
         <h2>Temas del momento</h2>
-        <article class="trending-article-card">
-          <span class="icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M3 17l6 -6l4 4l8 -8" />
-              <path d="M14 7l7 0l0 7" />
-            </svg>
-          </span>
-          <div>
-            <h3>Bienvenido ChatGPT-4o</h3>
-            <span>Hace 2 minutos</span>
-          </div>
-        </article>
+        <ul>
+          <li>
+            <a href="#">
+              <article class="trending-article-card">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 17l6 -6l4 4l8 -8" />
+                    <path d="M14 7l7 0l0 7" />
+                  </svg>
+                </span>
+                <div>
+                  <h3>Bienvenido ChatGPT-4o</h3>
+                  <span>Hace 2 minutos</span>
+                </div>
+              </article>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <article class="trending-article-card">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 17l6 -6l4 4l8 -8" />
+                    <path d="M14 7l7 0l0 7" />
+                  </svg>
+                </span>
+                <div>
+                  <h3>Bienvenido ChatGPT-4o asdasd ads</h3>
+                  <span>Hace 2 minutos</span>
+                </div>
+              </article>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <article class="trending-article-card">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 17l6 -6l4 4l8 -8" />
+                    <path d="M14 7l7 0l0 7" />
+                  </svg>
+                </span>
+                <div>
+                  <h3>Bienvenido ChatGPT-4o</h3>
+                  <span>Hace 2 minutos</span>
+                </div>
+              </article>
+            </a>
+          </li>
+        </ul>
       </aside>
     </main>
 

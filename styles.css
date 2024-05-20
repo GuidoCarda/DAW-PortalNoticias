@@ -117,6 +117,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 3rem;
   gap: 2.5rem;
 }
 
@@ -127,9 +128,25 @@ header {
 .categories ul a {
   text-decoration: none;
   color: black;
+  padding: 0.2rem 0.875rem;
+  border-radius: 0.5rem;
+}
+
+.categories ul a:hover {
+  text-decoration: underline #5d7adb;
 }
 
 @media screen and (min-width: 768px) {
+  header nav ul {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   header nav ul {
     display: flex;
   }
@@ -161,6 +178,10 @@ main section ul {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+main aside:first-of-type {
+  display: none;
 }
 
 .news-article {
@@ -196,34 +217,56 @@ main aside {
   background: #fafafa;
 }
 
-.article-card img {
-  background: rgb(225, 225, 225);
-  width: 100%;
-  aspect-ratio: 9/6;
-  object-fit: cover;
-  border: 1px solid rgb(208, 215, 230);
+aside.most-visited-categories ul a {
+  display: block;
+  color: inherit;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 200ms;
+  border: 1px solid transparent;
 }
 
-.article-card h2 {
-  font-size: 1.125rem;
-  margin-block: 1rem;
+aside.most-visited-categories ul a:hover {
+  /* background: #5d7adb; */
+  border-color: #5d7adb;
 }
 
-.article-card p {
-  font-size: 0.8rem;
-  margin-block: 0.25rem 0;
+aside.most-visited-categories ul a {
+  color: inherit;
+  text-decoration: none;
+}
+
+aside.trending ul {
+  display: flex;
+  flex-direction: column;
+}
+
+aside.trending ul a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 200ms;
+  padding: 6px;
+  border-radius: 0.8rem;
+  border: 1px solid transparent;
+}
+
+aside.trending ul a:hover {
+  border: 1px solid #5d7adb62;
 }
 
 .trending-article-card {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
 .trending-article-card h3 {
-  margin: 0;
   font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .trending-article-card h3 + span {
@@ -238,17 +281,26 @@ main aside {
   width: 4rem;
   aspect-ratio: 1;
   border-radius: 0.5rem;
-  background: rgb(231, 231, 231);
+  transition: all 200ms;
+  background: #e7e7e7;
+}
+
+a:hover > .trending-article-card .icon {
+  color: #5d7adb;
 }
 
 .trending-article-card .icon svg {
   width: 2rem;
   inset: 0;
   margin: auto;
-  color: rgb(113, 118, 131);
+  color: #717683;
 }
 
 @media screen and (min-width: 768px) {
+  main aside:first-of-type {
+    display: none;
+  }
+
   main {
     flex-direction: row;
   }
@@ -270,6 +322,10 @@ main aside {
     margin-inline: auto;
     background: rgb(215, 215, 215);
     border-radius: 1rem;
+  }
+
+  main aside:first-of-type {
+    display: block;
   }
 }
 
