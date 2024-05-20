@@ -20,12 +20,11 @@ h5 {
 
 h1 {
   font-size: 2.5rem;
-  max-width: 30ch;
+  /* max-width: 30ch; */
 }
 
 p,
 li {
-  max-width: 60ch;
   font-size: 1.125rem;
   line-height: 1.5;
 }
@@ -57,9 +56,21 @@ header nav ul {
   margin-left: 2rem;
 }
 
-header span {
+header .site-icon {
   font-size: 1.25rem;
   font-weight: bold;
+  display: inline-flex;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+header .site-icon svg {
+  transition: color 200ms;
+}
+
+header .site-icon:hover svg {
+  color: #5d7adb;
 }
 
 header nav ul li a {
@@ -119,10 +130,6 @@ header {
 }
 
 @media screen and (min-width: 768px) {
-  header {
-    justify-content: flex-start;
-  }
-
   header nav ul {
     display: flex;
   }
@@ -147,13 +154,40 @@ main section {
   padding: 2rem;
   background: #ffffff;
 }
+main section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
-.post-img {
-  /* height: 15rem; */
-  margin-bottom: 2rem;
+.news-article {
+}
+
+.news-article img {
   width: 100%;
-  background: rgb(215, 215, 215);
-  border-radius: 1rem;
+  aspect-ratio: 16/9;
+  background: rgb(219, 219, 219);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+
+.news-article h2 {
+}
+
+.news-article p {
+  margin: 0;
+  color: gray;
+}
+
+.news-article a {
+  display: block;
+  text-decoration: none;
+  margin-top: 1rem;
+  color: #5d7adb;
 }
 
 main aside {
@@ -200,6 +234,7 @@ main aside {
 .trending-article-card .icon {
   display: block;
   height: 4rem;
+  flex-shrink: 0;
   width: 4rem;
   aspect-ratio: 1;
   border-radius: 0.5rem;
@@ -227,8 +262,6 @@ main aside {
 
   main section > div {
     border: 1px solid rgb(249, 249, 249);
-    max-width: 56rem;
-    margin-inline: auto;
   }
 
   .post-img {
