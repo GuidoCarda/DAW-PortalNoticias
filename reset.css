@@ -18,8 +18,17 @@ h4 {
   font-weight: 800;
 }
 
+h2 {
+  font-size: 1.675rem;
+}
+
 p {
   text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
@@ -32,7 +41,7 @@ ul {
 
 /**
  * This CSS block is a More Effective CSS Image Reset. 
- * It resets the default styles of an image element
+ * It resets the default styles of an image elrement
  * and adds some additional styles to improve its rendering. 
  * 
  * The `max-width: 100%;` ensures that the image does not exceed its container's width, 
