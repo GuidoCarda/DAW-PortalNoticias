@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Subscribite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,11 +16,11 @@
   </head>
   <style>
     .subscription-form {
-      width: min(30rem, 100%);
       margin-inline: auto;
     }
     .subscription-form h1 {
       font-size: 2rem;
+      width: 100%;
       margin-bottom: 1rem;
     }
 
@@ -61,6 +61,25 @@
       color: red;
       display: block;
       height: 1.5rem;
+    }
+
+    @media screen and (min-width: 768px) {
+      .subscription-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        max-width: 1080px;
+      }
+
+      .input-group {
+        flex: 1 1 calc(50% - 1rem);
+      }
+
+      .subscription-form button {
+        width: max-content;
+        padding-inline: 3rem;
+        margin-inline: auto;
+      }
     }
   </style>
   <body>
@@ -130,45 +149,65 @@
       <section>
         <form class="subscription-form">
           <h1>Hola</h1>
-          <label for="fullname">Nombre completo</label>
-          <input type="text" name="fullname" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="fullname">Nombre completo</label>
+            <input type="text" name="fullname" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="email">Email</label>
-          <input type="email" name="email" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="password">Contraseña</label>
-          <input type="password" name="password" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="repeatedPassword">Repetir Contraseña</label>
-          <input type="password" name="repeatedPassword" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="repeatedPassword">Repetir Contraseña</label>
+            <input type="password" name="repeatedPassword" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="age">Edad</label>
-          <input type="text" name="age" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="age">Edad</label>
+            <input type="text" name="age" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="phone">Telefono</label>
-          <input type="text" name="phone" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="phone">Telefono</label>
+            <input type="text" name="phone" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="address">Direccion</label>
-          <input type="text" name="address" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="address">Direccion</label>
+            <input type="text" name="address" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="city">Ciudad</label>
-          <input type="text" name="city" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="city">Ciudad</label>
+            <input type="text" name="city" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="zipCode">Postal code</label>
-          <input type="text" name="zipCode" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="zipCode">Postal code</label>
+            <input type="text" name="zipCode" />
+            <span class="error-msg"></span>
+          </div>
 
-          <label for="id">Postal code</label>
-          <input type="text" name="id" />
-          <span class="error-msg"></span>
+          <div class="input-group">
+            <label for="id">Postal code</label>
+            <input type="text" name="id" />
+            <span class="error-msg"></span>
+          </div>
 
           <button>Enviar</button>
         </form>

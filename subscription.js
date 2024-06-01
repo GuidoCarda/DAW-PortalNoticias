@@ -1,6 +1,8 @@
 var form = document.querySelector(".subscription-form");
 var mainTitle = document.querySelector("h1");
-var inputs = document.querySelectorAll(".subscription-form > input");
+var inputs = document.querySelectorAll(
+  ".subscription-form > .input-group > input"
+);
 
 var validate = {
   fullname: validateFullName,
@@ -81,10 +83,11 @@ function validateFullName(value) {
   return null;
 }
 function validateEmail(value) {
-  var emailRegex =
+  var emailPattern =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var isValid = emailPattern.test(value);
 
-  if (!value.match(emailRegex)) {
+  if (!isValid) {
     return "Ingrese un email valido";
   }
 
@@ -92,7 +95,7 @@ function validateEmail(value) {
 }
 function validatePassword(value) {
   if (value.length < 8) {
-    return "debe tener al menos 8 caracteres";
+    return "Debe tener al menos 8 caracteres";
   }
 
   return null;
@@ -100,7 +103,11 @@ function validatePassword(value) {
 
 function validateRepeatedPassword(value) {
   var password = document.querySelector("input[name='password']").value;
-  console.log(password);
+
+  if (password.length === 0) {
+    return "Complete la contraseña";
+  }
+
   if (value !== password) {
     return "Las contraseñas no coindicen";
   }
@@ -120,7 +127,7 @@ function validatePhone(value) {
   var isValid = phonePattern.test(value);
 
   if (!isValid) {
-    return "debe ingresar un numero de 7 digitos";
+    return "Debe ingresar un numero de 7 digitos";
   }
 
   return null;
