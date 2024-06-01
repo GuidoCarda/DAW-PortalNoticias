@@ -14,38 +14,167 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="reset.css" />
   </head>
+  <style>
+    .subscription-form {
+      width: min(30rem, 100%);
+      margin-inline: auto;
+    }
+    .subscription-form h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .subscription-form label {
+      display: block;
+      margin-bottom: 0.125rem;
+      color: gray;
+    }
+
+    .subscription-form input {
+      width: 100%;
+      height: 3rem;
+      border: 1px solid rgb(196, 196, 196);
+      padding-left: 0.5rem;
+    }
+
+    .subscription-form input.error {
+      border-color: red;
+    }
+
+    .subscription-form :is(input, button) {
+      border-radius: 0.3rem;
+      outline: none;
+      font: inherit;
+    }
+
+    .subscription-form button {
+      height: 3rem;
+      width: 100%;
+      background: #5d7adb;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.125rem;
+    }
+
+    .subscription-form .error-msg {
+      color: red;
+      display: block;
+      height: 1.5rem;
+    }
+  </style>
   <body>
-    <form class="subscription-form">
-      <label for="fullname">Nombre completo</label>
-      <input type="text" name="fullname" />
+    <header>
+      <a href="/index.html" class="site-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-news"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11"
+          />
+          <path d="M8 8l4 0" />
+          <path d="M8 12l4 0" />
+          <path d="M8 16l4 0" />
+        </svg>
+        Doguinews</a
+      >
+      <nav>
+        <ul class="nav-links">
+          <li><a href="">Inicio</a></li>
+          <li><a href="">Noticias</a></li>
+          <li><a href="">Categorias</a></li>
+          <li><a href="">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 6l16 0" />
+          <path d="M4 12l16 0" />
+          <path d="M4 18l16 0" />
+        </svg>
+      </button>
+    </header>
+    <div class="categories">
+      <ul>
+        <li><a href="#">Arquitectura</a></li>
+        <li><a href="#">Frameworks</a></li>
+        <li><a href="#">Patrones</a></li>
+        <li><a href="#">Mejores Prácticas</a></li>
+        <li><a href="#">Frameworks</a></li>
+        <li><a href="#">Frameworks</a></li>
+      </ul>
+    </div>
+    <main>
+      <section>
+        <form class="subscription-form">
+          <h1>Hola</h1>
+          <label for="fullname">Nombre completo</label>
+          <input type="text" name="fullname" />
+          <span class="error-msg"></span>
 
-      <label for="email">Email</label>
-      <input type="email" name="email" />
+          <label for="email">Email</label>
+          <input type="email" name="email" />
+          <span class="error-msg"></span>
 
-      <label for="password">Contraseña</label>
-      <input type="password" name="password" />
+          <label for="password">Contraseña</label>
+          <input type="password" name="password" />
+          <span class="error-msg"></span>
 
-      <label for="age">Edad</label>
-      <input type="text" name="age" />
+          <label for="repeatedPassword">Repetir Contraseña</label>
+          <input type="password" name="repeatedPassword" />
+          <span class="error-msg"></span>
 
-      <label for="phone">Telefono</label>
-      <input type="text" name="phone" />
+          <label for="age">Edad</label>
+          <input type="text" name="age" />
+          <span class="error-msg"></span>
 
-      <label for="address">Direccion</label>
-      <input type="text" name="address" />
+          <label for="phone">Telefono</label>
+          <input type="text" name="phone" />
+          <span class="error-msg"></span>
 
-      <label for="city">Ciudad</label>
-      <input type="text" name="city" />
+          <label for="address">Direccion</label>
+          <input type="text" name="address" />
+          <span class="error-msg"></span>
 
-      <label for="postalCode">Postal code</label>
-      <input type="text" name="postalCode" />
+          <label for="city">Ciudad</label>
+          <input type="text" name="city" />
+          <span class="error-msg"></span>
 
-      <label for="id">Postal code</label>
-      <input type="text" name="id" />
+          <label for="zipCode">Postal code</label>
+          <input type="text" name="zipCode" />
+          <span class="error-msg"></span>
 
-      <button>Enviar</button>
-    </form>
+          <label for="id">Postal code</label>
+          <input type="text" name="id" />
+          <span class="error-msg"></span>
 
-    <script src="'subscription.js"></script>
+          <button>Enviar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="subscription.js"></script>
   </body>
 </html>
