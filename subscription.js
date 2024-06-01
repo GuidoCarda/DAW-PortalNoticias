@@ -115,7 +115,16 @@ function validateAge(value) {
 
   return null;
 }
-function validatePhone(value) {}
+function validatePhone(value) {
+  var phonePattern = /^\d{7}$/;
+  var isValid = phonePattern.test(value);
+
+  if (!isValid) {
+    return "debe ingresar un numero de 7 digitos";
+  }
+
+  return null;
+}
 function validateAddress(value) {
   if (value.lenght < 5) {
     return "Debe contener al menos 5 caracteres";
@@ -128,20 +137,29 @@ function validateAddress(value) {
   return null;
 }
 function validateCity(value) {
-  if (value.lenght < 3) {
+  if (value.length < 3) {
     return "Debe tener al menos 3 caracteres";
   }
   return null;
 }
 
 function validateZipCode(value) {
-  if (value.lenght < 3) {
+  if (value.length < 3) {
     return "Debe tener al menos 3 caracteres";
   }
 
   return null;
 }
-function validateId(value) {}
+function validateId(value) {
+  var idPattern = /^(\d{7}|\d{8})$/;
+  var isValid = idPattern.test(value);
+
+  if (!isValid) {
+    return "Debe ingresar un numero de 7 y 8 digitos";
+  }
+
+  return null;
+}
 
 // Nombre completo: Debe tener más de 6 letras y al menos un espacio entre medio.
 // Email: debe tener un formato de email válido.
