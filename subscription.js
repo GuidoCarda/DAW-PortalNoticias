@@ -3,6 +3,12 @@ var mainTitle = document.querySelector("h1");
 var inputs = document.querySelectorAll(
   ".subscription-form > .input-group > input"
 );
+var dialog = document.querySelector(".submit-dialog");
+var dialogCloseBtn = document.querySelector(".submit-dialog > button");
+
+dialogCloseBtn.addEventListener("click", function () {
+  dialog.close();
+});
 
 var validate = {
   fullname: validateFullName,
@@ -15,6 +21,19 @@ var validate = {
   city: validateCity,
   zipCode: validateZipCode,
   id: validateId,
+};
+
+var translations = {
+  fullname: "Nombre completo",
+  email: "Correo electrónico",
+  password: "Contraseña",
+  repeatedPassword: "Repetir contraseña",
+  age: "Edad",
+  phone: "Teléfono",
+  address: "Dirección",
+  city: "Ciudad",
+  zipCode: "Código Postal",
+  id: "DNI",
 };
 
 inputs.forEach(function (input) {
@@ -44,9 +63,6 @@ inputs.forEach(function (input) {
       input.classList.remove("error");
     }
 
-    console.log(e.target.classList.contains("error"));
-    console.log(e.target.name);
-
     if (target.classList.contains("error")) {
       target.classList.remove("error");
     }
@@ -55,21 +71,37 @@ inputs.forEach(function (input) {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
+  var dialogContentElem = dialog.querySelector(".content");
   var validationErrors = [];
 
   inputs.forEach(function (input) {
     var validationMessage = validate[input.name](input.value);
-    validationErrors.push(validationMessage);
+    var errorElement = input.nextElementSibling;
+
+    if (validationMessage) {
+      input.classList.add("error");
+      errorElement.textContent = validationMessage;
+      validationErrors.push({ field: input.name, message: validationMessage });
+    }
   });
 
-  if (validationErrors.length !== 0) {
+  var dialogContent = "";
+
+  for (var i = 0; i < validationErrors.length; i++) {
+    var error = validationErrors[i];
+
+    console.log(error);
+    dialogContent += "<h2>" + translations[error.field] + "</h2>";
+    dialogContent += "<p>" + error.message + "</p>";
+  }
+  dialogContentElem.innerHTML = dialogContent;
+
+  if (!validationErrors.length) {
+    form.reset();
   }
 
-  alert("submitted");
+  dialog.showModal();
 });
-
-// Se debe validar cada campo y mostrar un mensaje de error descriptivo abajo del campo que falló. Realizar las siguientes validaciones:
 
 function validateFullName(value) {
   if (value.length < 6) {
@@ -82,6 +114,7 @@ function validateFullName(value) {
 
   return null;
 }
+
 function validateEmail(value) {
   var emailPattern =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -93,6 +126,7 @@ function validateEmail(value) {
 
   return null;
 }
+
 function validatePassword(value) {
   if (value.length < 8) {
     return "Debe tener al menos 8 caracteres";
@@ -122,6 +156,7 @@ function validateAge(value) {
 
   return null;
 }
+
 function validatePhone(value) {
   var phonePattern = /^\d{7}$/;
   var isValid = phonePattern.test(value);
@@ -132,6 +167,7 @@ function validatePhone(value) {
 
   return null;
 }
+
 function validateAddress(value) {
   if (value.lenght < 5) {
     return "Debe contener al menos 5 caracteres";
@@ -143,6 +179,7 @@ function validateAddress(value) {
 
   return null;
 }
+
 function validateCity(value) {
   if (value.length < 3) {
     return "Debe tener al menos 3 caracteres";
@@ -157,6 +194,7 @@ function validateZipCode(value) {
 
   return null;
 }
+
 function validateId(value) {
   var idPattern = /^(\d{7}|\d{8})$/;
   var isValid = idPattern.test(value);

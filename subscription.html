@@ -11,8 +11,8 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <style>
     .subscription-form {
@@ -41,13 +41,15 @@
       border-color: red;
     }
 
-    .subscription-form :is(input, button) {
+    .subscription-form :is(input, button),
+    dialog button {
       border-radius: 0.3rem;
       outline: none;
       font: inherit;
     }
 
-    .subscription-form button {
+    .subscription-form button,
+    dialog button {
       height: 3rem;
       width: 100%;
       background: #5d7adb;
@@ -55,12 +57,37 @@
       color: white;
       font-weight: bold;
       font-size: 1.125rem;
+      margin-top: 1rem;
     }
 
     .subscription-form .error-msg {
       color: red;
       display: block;
       height: 1.5rem;
+    }
+
+    .input-group + .input-group {
+      margin-top: 0.5rem;
+    }
+
+    dialog {
+      border: none;
+      padding: 3rem 2rem;
+      border-radius: 0.5rem;
+      margin: auto;
+    }
+
+    dialog .content {
+      columns: 2;
+      margin-bottom: 1rem;
+    }
+
+    dialog h2 {
+      font-size: 1.5rem;
+    }
+
+    dialog p + h2 {
+      margin-top: 1rem;
     }
 
     @media screen and (min-width: 768px) {
@@ -75,6 +102,10 @@
         flex: 1 1 calc(50% - 1rem);
       }
 
+      .input-group + .input-group {
+        margin-top: 0;
+      }
+
       .subscription-form button {
         width: max-content;
         padding-inline: 3rem;
@@ -83,6 +114,10 @@
     }
   </style>
   <body>
+    <dialog class="submit-dialog">
+      <div class="content"></div>
+      <button>Aceptar</button>
+    </dialog>
     <header>
       <a href="/index.html" class="site-icon">
         <svg
