@@ -11,110 +11,14 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/subscription.css" />
   </head>
-  <style>
-    .subscription-form {
-      margin-inline: auto;
-    }
-    .subscription-form h1 {
-      font-size: 2rem;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
 
-    .subscription-form label {
-      display: block;
-      margin-bottom: 0.125rem;
-      color: gray;
-    }
-
-    .subscription-form input {
-      width: 100%;
-      height: 3rem;
-      border: 1px solid rgb(196, 196, 196);
-      padding-left: 0.5rem;
-    }
-
-    .subscription-form input.error {
-      border-color: red;
-    }
-
-    .subscription-form :is(input, button),
-    dialog button {
-      border-radius: 0.3rem;
-      outline: none;
-      font: inherit;
-    }
-
-    .subscription-form button,
-    dialog button {
-      height: 3rem;
-      width: 100%;
-      background: #5d7adb;
-      border: none;
-      color: white;
-      font-weight: bold;
-      font-size: 1.125rem;
-      margin-top: 1rem;
-    }
-
-    .subscription-form .error-msg {
-      color: red;
-      display: block;
-      height: 1.5rem;
-    }
-
-    .input-group + .input-group {
-      margin-top: 0.5rem;
-    }
-
-    dialog {
-      border: none;
-      padding: 3rem 2rem;
-      border-radius: 0.5rem;
-      margin: auto;
-    }
-
-    dialog .content {
-      columns: 2;
-      margin-bottom: 1rem;
-    }
-
-    dialog h2 {
-      font-size: 1.5rem;
-    }
-
-    dialog p + h2 {
-      margin-top: 1rem;
-    }
-
-    @media screen and (min-width: 768px) {
-      .subscription-form {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        max-width: 1080px;
-      }
-
-      .input-group {
-        flex: 1 1 calc(50% - 1rem);
-      }
-
-      .input-group + .input-group {
-        margin-top: 0;
-      }
-
-      .subscription-form button {
-        width: max-content;
-        padding-inline: 3rem;
-        margin-inline: auto;
-      }
-    }
-  </style>
   <body>
     <dialog class="submit-dialog">
+      <h2 class="header"></h2>
       <div class="content"></div>
       <button>Aceptar</button>
     </dialog>
@@ -144,10 +48,10 @@
       >
       <nav>
         <ul class="nav-links">
-          <li><a href="">Inicio</a></li>
-          <li><a href="">Noticias</a></li>
-          <li><a href="">Categorias</a></li>
-          <li><a href="">Contacto</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html">Noticias</a></li>
+          <li><a href="index.html">Categorias</a></li>
+          <li><a href="subscription.html">Subscribirse</a></li>
         </ul>
       </nav>
       <button class="nav-toggle">
@@ -186,61 +90,65 @@
           <h1>Hola</h1>
           <div class="input-group">
             <label for="fullname">Nombre completo</label>
-            <input type="text" name="fullname" />
+            <input type="text" name="fullname" id="fullname" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" id="email" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="password">Contraseña</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" id="password" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="repeatedPassword">Repetir Contraseña</label>
-            <input type="password" name="repeatedPassword" />
+            <input
+              type="password"
+              name="repeatedPassword"
+              id="repeatedPassword"
+            />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="age">Edad</label>
-            <input type="text" name="age" />
+            <input type="text" name="age" id="age" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="phone">Telefono</label>
-            <input type="text" name="phone" />
+            <input type="text" name="phone" id="phone" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="address">Direccion</label>
-            <input type="text" name="address" />
+            <input type="text" name="address" id="address" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="city">Ciudad</label>
-            <input type="text" name="city" />
+            <input type="text" name="city" id="city" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
             <label for="zipCode">Postal code</label>
-            <input type="text" name="zipCode" />
+            <input type="text" name="zipCode" id="zipCode" />
             <span class="error-msg"></span>
           </div>
 
           <div class="input-group">
-            <label for="id">Postal code</label>
-            <input type="text" name="id" />
+            <label for="id">DNI</label>
+            <input type="text" name="id" id="id" />
             <span class="error-msg"></span>
           </div>
 

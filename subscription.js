@@ -6,10 +6,6 @@ var inputs = document.querySelectorAll(
 var dialog = document.querySelector(".submit-dialog");
 var dialogCloseBtn = document.querySelector(".submit-dialog > button");
 
-dialogCloseBtn.addEventListener("click", function () {
-  dialog.close();
-});
-
 var validate = {
   fullname: validateFullName,
   email: validateEmail,
@@ -36,6 +32,16 @@ var translations = {
   id: "DNI",
 };
 
+// Event listeners
+dialogCloseBtn.addEventListener("click", function () {
+  if (dialog.dataset.state === "success") {
+    form.reset();
+    mainTitle.textContent = "Hola ";
+  }
+
+  dialog.close();
+});
+
 inputs.forEach(function (input) {
   if (input.name === "fullname") {
     input.addEventListener("keyup", function (e) {
@@ -58,12 +64,8 @@ inputs.forEach(function (input) {
     var target = e.target;
     var errorElement = input.nextElementSibling;
 
-    if (errorElement.textContent !== "") {
-      errorElement.textContent = "";
-      input.classList.remove("error");
-    }
-
     if (target.classList.contains("error")) {
+      errorElement.textContent = "";
       target.classList.remove("error");
     }
   });
@@ -71,8 +73,35 @@ inputs.forEach(function (input) {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  var dialogContentElem = dialog.querySelector(".content");
-  var validationErrors = [];
+
+  var validationErrors = handleFieldsValidation();
+
+  if (validationErrors.length) {
+    displayDialogContent(validationErrors, "error");
+  } else {
+    var formValues = getFormValues(form);
+    displayDialogContent(formValues);
+  }
+
+  dialog.showModal();
+});
+
+function getFormValues(form) {
+  var elements = form.elements;
+  var formValues = [];
+
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    if (element.name) {
+      formValues.push({ name: element.name, value: element.value });
+    }
+  }
+
+  return formValues;
+}
+
+function handleFieldsValidation() {
+  var errors = [];
 
   inputs.forEach(function (input) {
     var validationMessage = validate[input.name](input.value);
@@ -81,28 +110,38 @@ form.addEventListener("submit", function (e) {
     if (validationMessage) {
       input.classList.add("error");
       errorElement.textContent = validationMessage;
-      validationErrors.push({ field: input.name, message: validationMessage });
+      errors.push({ name: input.name, value: validationMessage });
     }
   });
 
+  return errors;
+}
+
+function displayDialogContent(data, state = "success") {
+  var dialogContentElem = dialog.querySelector(".content");
+  var dialogTitle = dialog.querySelector(".header");
   var dialogContent = "";
 
-  for (var i = 0; i < validationErrors.length; i++) {
-    var error = validationErrors[i];
+  dialogTitle.innerHTML =
+    state !== "success"
+      ? "Corrija los siguientes campos:"
+      : "Su solicitud a sido enviada:";
 
-    console.log(error);
-    dialogContent += "<h2>" + translations[error.field] + "</h2>";
-    dialogContent += "<p>" + error.message + "</p>";
+  dialog.dataset.state = state;
+
+  for (var i = 0; i < data.length; i++) {
+    var field = data[i];
+
+    dialogContent += "<div>";
+    dialogContent += "<h2>" + translations[field.name] + "</h2>";
+    dialogContent += "<p>" + field.value + "</p>";
+    dialogContent += "</div>";
   }
+
   dialogContentElem.innerHTML = dialogContent;
+}
 
-  if (!validationErrors.length) {
-    form.reset();
-  }
-
-  dialog.showModal();
-});
-
+// Form validations
 function validateFullName(value) {
   if (value.length < 6) {
     return "Debe tener al menos 6 letras";
@@ -152,6 +191,10 @@ function validateRepeatedPassword(value) {
 function validateAge(value) {
   if (value < 18) {
     return "Debe tener 18 o mas";
+  }
+
+  if (isNaN(value)) {
+    return "Debe ingresar un numero";
   }
 
   return null;
