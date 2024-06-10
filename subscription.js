@@ -6,6 +6,8 @@ var inputs = document.querySelectorAll(
 var dialog = document.querySelector(".submit-dialog");
 var dialogCloseBtn = document.querySelector(".submit-dialog > button");
 
+var SUBSCRIPTION_STORAGE_KEY = "SUBSCRIPTION";
+
 var validate = {
   fullname: validateFullName,
   email: validateEmail,
@@ -32,15 +34,30 @@ var translations = {
   id: "DNI",
 };
 
-// Event listeners
-dialogCloseBtn.addEventListener("click", function () {
-  if (dialog.dataset.state === "success") {
-    form.reset();
-    mainTitle.textContent = "Hola ";
+function checkForSubscription() {
+  var subscription = readLocalStorage(SUBSCRIPTION_STORAGE_KEY);
+
+  if (!subscription) return;
+
+  var flatObject = {};
+  for (var field of subscription) {
+    flatObject[field.name] = field.value;
   }
 
+  mainTitle.innerHTML = "Hola " + flatObject.fullname;
+  inputs.forEach(function (input) {
+    input.value = flatObject[input.name];
+  });
+}
+
+function closeDialog() {
+  dialog.querySelector(".header").innerHTML = "";
+  dialog.querySelector(".content").innerHTML = "";
   dialog.close();
-});
+}
+
+window.addEventListener("load", checkForSubscription);
+dialogCloseBtn.addEventListener("click", closeDialog);
 
 inputs.forEach(function (input) {
   if (input.name === "fullname") {
@@ -80,11 +97,36 @@ form.addEventListener("submit", function (e) {
     displayDialogContent(validationErrors, "error");
   } else {
     var formValues = getFormValues(form);
-    displayDialogContent(formValues);
+    subscribe(formValues);
+  }
+});
+
+function subscribe(data) {
+  var url = new URL("https://jsonplaceholder.typicode.com/users");
+
+  for (var field of data) {
+    url.searchParams.append(field.name, field.value);
   }
 
-  dialog.showModal();
-});
+  fetch(url)
+    .then(function (response) {
+      if (response.ok) {
+        writeLocalStorage(SUBSCRIPTION_STORAGE_KEY, data);
+        displayDialogContent(data);
+      }
+    })
+    .catch(function (error) {
+      displayDialogContent(data, "subscription_error");
+    });
+}
+
+function writeLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function readLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
 
 function getFormValues(form) {
   var elements = form.elements;
@@ -119,26 +161,40 @@ function handleFieldsValidation() {
 
 function displayDialogContent(data, state = "success") {
   var dialogContentElem = dialog.querySelector(".content");
-  var dialogTitle = dialog.querySelector(".header");
+  var dialogHeader = dialog.querySelector(".header");
   var dialogContent = "";
-
-  dialogTitle.innerHTML =
-    state !== "success"
-      ? "Corrija los siguientes campos:"
-      : "Su solicitud a sido enviada:";
 
   dialog.dataset.state = state;
 
-  for (var i = 0; i < data.length; i++) {
-    var field = data[i];
+  var stateIcon = document.createElement("img");
+  var dialogTitle = document.createElement("h2");
 
-    dialogContent += "<div>";
-    dialogContent += "<h2>" + translations[field.name] + "</h2>";
-    dialogContent += "<p>" + field.value + "</p>";
-    dialogContent += "</div>";
+  stateIcon.classList.add("state-icon");
+  stateIcon.src =
+    "/assets/" + (state === "success" ? "check" : "error") + ".svg";
+
+  if (state !== "subscription_error") {
+    for (var i = 0; i < data.length; i++) {
+      var field = data[i];
+      dialogContent += "<div>";
+      dialogContent += "<h2>" + translations[field.name] + "</h2>";
+      dialogContent += "<p>" + field.value + "</p>";
+      dialogContent += "</div>";
+    }
+
+    dialogTitle.innerHTML +=
+      state !== "success"
+        ? "Corrija los siguientes campos:"
+        : "Subscripcion exitosa:";
+  } else {
+    dialogTitle.innerHTML = "Algo salio mal durante el proceso de subscripcion";
+    dialogContent =
+      "<p>Intenta más tarde. Si el error persiste no dudes en contactarnos</p>";
   }
 
+  dialogHeader.append(stateIcon, dialogTitle);
   dialogContentElem.innerHTML = dialogContent;
+  dialog.showModal();
 }
 
 // Form validations
@@ -147,7 +203,7 @@ function validateFullName(value) {
     return "Debe tener al menos 6 letras";
   }
 
-  if (!value.includes(" ")) {
+  if (!value.trim().includes(" ")) {
     return "Debe al menos un espacio";
   }
 
@@ -248,13 +304,3 @@ function validateId(value) {
 
   return null;
 }
-
-// Nombre completo: Debe tener más de 6 letras y al menos un espacio entre medio.
-// Email: debe tener un formato de email válido.
-// Contraseña: Al menos 8 caracteres, formados por letras y números.
-// Edad: Número entero mayor o igual a 18.
-// Teléfono: Número de al menos 7 dígitos, no aceptar espacios, guiones ni paréntesis.
-// Dirección: Al menos 5 caracteres, con letras, números y un espacio en el medio.
-// Ciudad: Al menos 3 caracteres.
-// Código Postal: Al menos 3 caracteres.
-// DNI: Número de 7 u 8 dígitos.

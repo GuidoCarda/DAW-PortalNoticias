@@ -66,6 +66,14 @@ dialog .content {
 
 dialog .header {
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.state-icon {
+  height: 4rem;
+  width: 4rem;
 }
 
 dialog h2 {
