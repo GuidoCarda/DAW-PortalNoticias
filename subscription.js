@@ -171,7 +171,7 @@ function displayDialogContent(data, state = "success") {
 
   stateIcon.classList.add("state-icon");
   stateIcon.src =
-    "/assets/" + (state === "success" ? "check" : "error") + ".svg";
+    "./assets/" + (state === "success" ? "check" : "error") + ".svg";
 
   if (state !== "subscription_error") {
     for (var i = 0; i < data.length; i++) {
